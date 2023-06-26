@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "844cdcab-f036-4fa5-9151-eac8f34fb9f7",
+		"name": "Booking Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19706766"
+	},
+	"item": [
+		{
+			"name": "Seat Service",
+			"item": [
+				{
+					"name": "Seats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/Seat",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"Seat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Seat Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/Seat/105",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"Seat",
+								"105"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Seat Booking Service",
+			"item": [
+				{
+					"name": "Book Seats",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"seats\": [\r\n      101, 102, 103\r\n  ],\r\n  \"name\": \"Shariq\",\r\n  \"phoneNumber\": \"9634806487\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3002/booking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Bookings Seats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/booking?phoneNumber=9634806487",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"booking"
+							],
+							"query": [
+								{
+									"key": "phoneNumber",
+									"value": "9634806487"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
