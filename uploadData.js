@@ -1,6 +1,16 @@
 const fs = require('fs');
 const csv = require('csv-parser');
-const pool = require('./database')
+const mysql = require('mysql2/promise');
+
+const pool = mysql.createPool({
+    host: 'host.docker.internal',  // if use docker
+    // host: 'localhost',
+    port: '3306',
+    user: 'root',
+    password: 'root',
+    database: 'BookingService',
+    connectionLimit: 10
+});
 
 async function uploadData() {
     try {

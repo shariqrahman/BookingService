@@ -1,4 +1,14 @@
-const pool = require('../../database')
+const mysql = require('mysql2/promise');
+
+const pool = mysql.createPool({
+    host: 'host.docker.internal',  // if use docker
+    // host: 'localhost',         // if code run directly
+    port: '3306',
+    user: 'root',
+    password: 'root',
+    database: 'BookingService',
+    connectionLimit: 10
+});
 
 class Seats {
 

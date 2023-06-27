@@ -1,4 +1,14 @@
-const pool = require('../../database');
+const mysql = require('mysql2/promise');
+
+const pool = mysql.createPool({
+    host: 'host.docker.internal',  // if use docker
+    // host: 'localhost',         // if code run directly
+    port: '3306',
+    user: 'root',
+    password: 'root',
+    database: 'BookingService',
+    connectionLimit: 10
+});
 
 class Booking {
   static async create(bookingData, name, phoneNumber, totalAmount) {
@@ -27,7 +37,7 @@ class Booking {
     try {
       const [rows] = await pool.execute('select IsBooked from Seats where SeatId = ?', [seatId]);
       if (rows.length > 0) {
-        return rows[0].is_booked === 1;
+        return rows[0].IsBooked === 1;
       }
       return false;
     }
